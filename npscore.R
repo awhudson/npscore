@@ -1,5 +1,3 @@
-#!/usr/local/bin/Rscript
-
 require(nprobust)
 require(mvtnorm)
 require(CVXR)
@@ -699,18 +697,18 @@ lprobust.uniform <- function(x, y, alpha = .05, no.bs = 5000,
 }
 
 # Example 1: Regression w/out Adjustments
-set.seed(206)
-theta0 <- function(x){sin(3 * pi * x/2) * (1 + 18*x^2 * (sign(x) + 1))^(-1)}
-n <- 500
-x <- runif(n, -1, 1)
-y <- theta0(x) + rnorm(n, sd = 1)
-out <-  PAM(y = y, x = x, norm = "sup", d = 20)
-
-plot(x, y - mean(y))
-lines(out$x0, out$cb.lower, col = "red")
-lines(out$x0, out$cb.upper, col = "red")
-lines(out$x0, out$fitted.x0, col = "green")
-lines(out$x0, theta0(out$x0) - mean(theta0(x)), col = "blue")
+# set.seed(206)
+# theta0 <- function(x){sin(3 * pi * x/2) * (1 + 18*x^2 * (sign(x) + 1))^(-1)}
+# n <- 500
+# x <- runif(n, -1, 1)
+# y <- theta0(x) + rnorm(n, sd = 1)
+# out <-  PAM(y = y, x = x, norm = "sup", d = 20)
+#
+# plot(x, y - mean(y))
+# lines(out$x0, out$cb.lower, col = "red")
+# lines(out$x0, out$cb.upper, col = "red")
+# lines(out$x0, out$fitted.x0, col = "green")
+# lines(out$x0, theta0(out$x0) - mean(theta0(x)), col = "blue")
 
 # Example 2: Regression w/ Adjustments
 # theta0 <- function(x){sin(pi * x)}
